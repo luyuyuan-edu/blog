@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./js/vue.min.js"></script>
+    
+    <style>
+       
+    </style>
+</head>
+<body>
+    <nav class="header">
+        <div class="header_content" id="search">
+            <span>卢雨源个人博客 | 技术博客</span>
+            <div class="daohang">
+                <ul>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="./map.html">地图</a></li>
+                    <li><a href="/">留言</a></li>
+                </ul>
+            </div>
+            
+            <input 
+             type="text" placeholder="输入关键字" v-model="seachlist">
+            <button >搜索</button>
+            <div v-show="inputfous && seachlist.length" class="seachlist">
+                <ul >
+                    <li  v-for="seach in seachVal"><a @click="jte(seach.id)" >{{seach.title}}</a></li>
+                </ul>
+
+            </div>
+            
+          
+        </div>
+    </nav>
+    <div class="content">
+        <div class="content_left">
+            <div class="everyDay" id="everyDay">
+                <span class="everyDayTitle">每日一句</span>
+                <p v-html="content"></p>
+                
+            </div>
+            <div id="blogList" >
+                <ul>
+                    <li v-for="article in articlelist">
+                        <a @click="junto(article.id)">{{article.title}}</a>
+                        <p>{{article.content}}</p>
+                        <div><span>发布于{{article.data}}&nbsp;|&nbsp;浏览{{article.views}}&nbsp;|&nbsp;Tags &nbsp; &nbsp;{{article.tags}}</span></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="content_right">
+            <div id="tags_cloud">
+                <div>随机标签云</div>
+                <a  v-for="tag in tags" @click="jto(tag.id)" v-bind:style="{color:randmColor(),fontSize:randomSize()}" >{{tag.title}}</a>
+            </div>
+            <div id="hot_blog">
+                <span>最近热门</span>
+                <ul>
+                    <li v-for="hotbolg in titlelist"><a v-bind:href="hotbolg.link">{{hotbolg.title}}</a></li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+    <script src="./js/axios.js"></script>
+    <script src="./js/inde.js"></script>
+    <script src="./js/base.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/con.css">
+    <script src="./js/vue.min.js"></script>
+</head>
+<body>
+    <nav class="header">
+        <div class="header_content" id="search">
+            <span>卢雨源个人博客 | 技术博客</span>
+            <div class="daohang">
+                <ul>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="./map.html">地图</a></li>
+                    <li><a href="/">留言</a></li>
+                </ul>
+            </div>
+            <input 
+             type="text" placeholder="输入关键字" v-model="seachlist">
+            <button >搜索</button>
+            <div v-show="inputfous && seachlist.length" class="seachlist">
+                <ul >
+                    <li  v-for="seach in seachVal"><a @click="jte(seach.id)" >{{seach.title}}</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="content">
+        <div class="contents">
+            <div id="contentList" >
+                <ul>
+                    <li>
+                        <span>{{contents.title}}</span>
+                        <p>{{contents.content}}</p>
+                        <div>发布于{{contents.data}}&nbsp;|&nbsp;浏览{{contents.views}}&nbsp;|&nbsp;Tags{{contents.tags}}</div>
+                    </li>
+                </ul>    
+            </div>
+        </div>
+        <div class="pinglunqu">
+           <ul>
+               <li></li>
+           </ul>
+        </div>
+        <div class="pinglun">
+            <span>评论区</span>
+            <input type="text" placeholder="输入昵称">
+            <input type="text" placeholder="输入邮箱">
+            <textarea placeholder="无意义的内容是不会回复你的" cols="60" rows="20"></textarea>
+            <input type="text" placeholder="输入验证码">
+            <span></span>
+            <button>提交</button>
+        </div>
+    </div>
+    
+    <script src="./js/axios.js"></script>
+   <script src="./js/conent.js"></script>
+</body>
+</html>

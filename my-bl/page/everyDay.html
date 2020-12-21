@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .juery{
+            position: relative;
+            width: 300px;
+            margin: 0 auto;
+            margin-top: 40px;
+            
+        }
+        .juery h4{
+            text-align: center;
+        }
+        #editor{
+           width: 400px;
+           height: 300px;
+           font-size: 16px;
+           
+
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="juery">
+             <h4>文本编辑</h4>
+             <textarea name="" id="editor" cols="60" rows="16"></textarea>
+            <button id="btn" type="submit">提交</button>
+    </div>
+    
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        function submit(){
+            var content=$("#editor").val();
+            var contents={
+                text:content
+            }
+            console.log(content)
+            $.ajax({
+                url:"/news",
+                method:"get",
+                data:content,
+                success:function(resp){
+                    console.log(resp);
+                    
+                },
+                error:function(resp){
+                    console.log(resp)
+                }
+                
+            })
+        }
+        $("#btn").on("click",function(){
+            submit();
+        })
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/map.css">
+    <script src="./js/vue.min.js"></script>
+    
+</head>
+<body>
+    <h1>个人博客</h1>
+    <div class=""><a href="./index.html">个人博客首页</a>&gt;&gt;<a href="#">站点地图</a></div>
+    <div>
+        <h2>最新文章</h2>
+        <ul id="blogs">
+        <li v-for="map in maplist"><a @click="junto(map.id)" >{{ map.title}}</a></li>
+        </ul>
+
+
+    </div>
+    <script src="./js/axios.js"></script>
+    <script src="./js/map.js"></script>
+</body>
+</html>

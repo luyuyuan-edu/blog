@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .blog-list{
+            margin: 0px auto;
+            width: 600px;
+        }
+        .blog-list button{
+            margin-top: 20px;
+            width: 120px;
+            font-size: 16px;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="blog-list">
+        <div class="title">
+            <h4>标题</h4>
+            <textarea name="" id="title" cols="60" rows="6"></textarea>
+           
+        </div>
+        <div class="content">
+            <h4>内容</h4>
+            <textarea name="" id="content" cols="60" rows="16"></textarea>
+          
+        </div>
+        <div class="tages">
+            <h4>tages</h4>
+            <textarea name="" id="tages" cols="60" rows="4"></textarea>
+           
+        </div>
+        <button id="btn" type="submit">提交</button>
+
+
+    </div>
+    
+    
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        function submit(){
+            var title=$("#title").val();
+            var content=$("#content").val();
+            var tages=$("#tages").val();
+            var contents={
+                title:title,
+                content:content,
+                tages:tages
+            }
+            console.log(contents)
+            $.ajax({
+                url:"/bloglist",
+                method:"get",
+                data:contents,
+                success:function(resp){
+                    console.log(resp);
+                    
+                },
+                error:function(resp){
+                    
+                }
+                
+            })
+        }
+        $("#btn").on("click",function(){
+            submit();
+        })
+    </script>
+
+</body>
+</html>
